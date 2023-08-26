@@ -67,7 +67,7 @@ func RetrieveInitialUrl(shortUrl string) string {
 
 // Returns bool for if the customURL requested is in the cache
 func CustomLinkInCache(shortUrl string) bool {
-	exists, err := storeService.redisClient.Exists(ctx, shortUrl[:constants.ShortLinkLength]).Result()
+	exists, err := storeService.redisClient.Exists(ctx, shortUrl[:min(constants.ShortLinkLength, len(shortUrl))]).Result()
 	if err != nil {
 		panic(fmt.Sprintf("Failed CustomLinkInCache url | Error: %v - shortUrl: %s\n", err, shortUrl))
 	}

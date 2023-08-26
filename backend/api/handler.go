@@ -3,8 +3,6 @@ package handler
 import (
 	"net/http"
 
-	// note, this is because our go mod init declared the main module
-	// as under github.com/ckive/gourl
 	"github.com/ckive/gourl/backend/constants"
 	"github.com/ckive/gourl/backend/shortener"
 	"github.com/ckive/gourl/backend/store"
@@ -32,7 +30,7 @@ func CreateShortUrl(c *gin.Context) {
 		shortUrl = shortener.GenerateShortLink(creationRequest.LongUrl)
 	} else {
 		// not in cache, create the short url
-		shortUrl = creationRequest.CustomLink[:constants.ShortLinkLength]
+		shortUrl = creationRequest.CustomLink[:min(constants.ShortLinkLength, len(creationRequest.CustomLink))]
 	}
 	store.SaveUrlMapping(shortUrl, creationRequest.LongUrl, creationRequest.CustomLink)
 
@@ -47,6 +45,5 @@ func CreateShortUrl(c *gin.Context) {
 func HandleShortUrlRedirect(c *gin.Context) {
 	shortUrl := c.Param("shortUrl")
 	initialUrl := store.RetrieveInitialUrl(shortUrl)
-	// TODO check for shortUrl existence
 	c.Redirect(302, initialUrl)
 }
