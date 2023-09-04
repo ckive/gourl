@@ -1,0 +1,1 @@
+docker build -t urlshortener_api:v01-multistage -f Dockerfile.multistage .
