@@ -6,7 +6,7 @@ services:
       - "9808:9808"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`api.gourl.localhost`)"
+      - "traefik.http.routers.api.rule=Host(`api.go.localhost`)"
       - "traefik.http.services.api-service.loadbalancer.server.port=9808"
     depends_on:
       - redis
@@ -26,7 +26,7 @@ services:
       - "3000:3000"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`gourl.localhost`)"
+      - "traefik.http.routers.frontend.rule=Host(`go.localhost`)"
       - "traefik.http.services.frontend-service.loadbalancer.server.port=3000"
     networks:
       - traefik_proxy # Connect this service to your custom network

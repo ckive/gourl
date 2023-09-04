@@ -38,7 +38,8 @@ func main() {
 
 	// Use the cors middleware with the appropriate configuration
 	r.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"http://gourl.localhost"}, // Replace with your frontend's URL
+		AllowOrigins: []string{"http://go.localhost"}, // Replace with your frontend's URL
+		// AllowOrigins: []string{"https://go.yqydan.com"}, // Replace with your frontend's URL
 		AllowMethods: []string{"GET", "POST", "OPTIONS"},
 		AllowHeaders: []string{"Origin", "Content-Type"},
 		// ExposeHeaders:    []string{"Content-Length"},

@@ -67,7 +67,7 @@ function App() {
         </form>
         {shortenedUrl && (
           <div className="shortened-url">
-            <p>Shortened URL: <a href={"localhost:9808/" + shortenedUrl} target="_blank" rel="noopener noreferrer">{"gourl.localhost/" + shortenedUrl}</a></p>
+            <p>Shortened URL: <a href={"localhost:9808/" + shortenedUrl} target="_blank" rel="noopener noreferrer">{"go.yqydan.com/" + shortenedUrl}</a></p>
           </div>
 
         )}
